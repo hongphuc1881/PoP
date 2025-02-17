@@ -85,4 +85,91 @@ router.delete("/:postId", authMiddleware, async (req, res) => {
   }
 });
 
+/**
+ * @swagger
+ * tags:
+ *   name: Favorites
+ *   description: API quản lý bài viết yêu thích
+ */
+
+/**
+ * @swagger
+ * /api/favorites:
+ *   get:
+ *     summary: Lấy danh sách bài viết yêu thích của người dùng đang đăng nhập
+ *     tags: [Favorites]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Danh sách bài viết yêu thích.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 favorites:
+ *                   type: array
+ *                   items:
+ *                     $ref: '#/components/schemas/Post'
+ *       401:
+ *         description: Unauthorized.
+ *       500:
+ *         description: Lỗi server.
+ */
+
+/**
+ * @swagger
+ * /api/favorites/{postId}:
+ *   post:
+ *     summary: Thêm một bài viết vào danh sách yêu thích của người dùng
+ *     tags: [Favorites]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: postId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID của bài viết cần thêm vào favorites
+ *     responses:
+ *       200:
+ *         description: Bài viết đã được thêm vào danh sách yêu thích.
+ *       400:
+ *         description: Bài viết đã có trong favorites hoặc dữ liệu không hợp lệ.
+ *       401:
+ *         description: Unauthorized.
+ *       404:
+ *         description: Bài viết không tồn tại.
+ *       500:
+ *         description: Lỗi server.
+ */
+
+/**
+ * @swagger
+ * /api/favorites/{postId}:
+ *   delete:
+ *     summary: Gỡ bỏ một bài viết khỏi danh sách yêu thích của người dùng
+ *     tags: [Favorites]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: path
+ *         name: postId
+ *         required: true
+ *         schema:
+ *           type: string
+ *         description: ID của bài viết cần gỡ khỏi favorites
+ *     responses:
+ *       200:
+ *         description: Bài viết đã được gỡ khỏi danh sách yêu thích.
+ *       400:
+ *         description: Bài viết không nằm trong danh sách yêu thích.
+ *       401:
+ *         description: Unauthorized.
+ *       500:
+ *         description: Lỗi server.
+ */
+
 module.exports = router;

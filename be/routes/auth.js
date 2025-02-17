@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 const User = require("../models/User");
 
 const router = express.Router();
-const SECRET_KEY = process.env.JWT_SECRET || "secretkey"; // Lưu trong biến môi trường
+const SECRET_KEY = process.env.JWT_SECRET || "secretkey";
 
 // Đăng ký
 router.post("/register", async (req, res) => {
@@ -27,7 +27,6 @@ router.post("/register", async (req, res) => {
       role,
     });
     await newUser.save();
-    console.log("OK");
     res.status(201).json({ message: "Đăng ký thành công" });
   } catch (error) {
     console.log("server lỗi", error);
@@ -59,4 +58,81 @@ router.post("/login", async (req, res) => {
     res.status(500).json({ message: "Lỗi server" });
   }
 });
+
+/**
+ * @swagger
+ * tags:
+ *   name: Auth
+ *   description: Các API xác thực người dùng
+ */
+
+/**
+ * @swagger
+ * /api/auth/register:
+ *   post:
+ *     summary: Đăng ký tài khoản mới
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               username:
+ *                 type: string
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             example:
+ *               username: "testuser"
+ *               email: "test@example.com"
+ *               password: "123456"
+ *     responses:
+ *       201:
+ *         description: Đăng ký thành công.
+ *       400:
+ *         description: Email đã tồn tại hoặc dữ liệu không hợp lệ.
+ *       500:
+ *         description: Lỗi server.
+ */
+
+/**
+ * @swagger
+ * /api/auth/login:
+ *   post:
+ *     summary: Đăng nhập tài khoản
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               email:
+ *                 type: string
+ *               password:
+ *                 type: string
+ *             example:
+ *               email: "test@example.com"
+ *               password: "123456"
+ *     responses:
+ *       200:
+ *         description: Đăng nhập thành công.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 token:
+ *                   type: string
+ *                 role:
+ *                   type: string
+ *       400:
+ *         description: Email không tồn tại hoặc mật khẩu sai.
+ *       500:
+ *         description: Lỗi server.
+ */
 module.exports = router;
