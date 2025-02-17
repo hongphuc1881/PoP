@@ -1,0 +1,39 @@
+.sideBar {
+  width: 200px;
+}
+
+.sideBar a:hover {
+  color: var(--Primary-400);
+}
+
+.list {
+  padding: 8px 0px 8px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.account::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: block;
+  mask-image: url('./assets/UserImage.svg');
+  background-color: var(--Primary-400);
+}
+
+.order,
+.account {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.order::before {
+  content: '';
+  width: 24px;
+  height: 24px;
+  display: block;
+  mask-image: url('./assets/Order.svg');
+  background-color: var(--Primary-400);
+}

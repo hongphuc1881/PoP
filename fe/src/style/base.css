@@ -1,0 +1,46 @@
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: 1.6rem;
+  line-height: 1.6;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style: none;
+  font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+}
+
+:root {
+  --primary-color: #20aee5;
+  --alert-color: #f55852;
+  --success-color: #6fc02c;
+  --textlink-color: #0892c7;
+
+  --Primary-50: #fff3ee;
+  --Primary-75: #fff7db;
+  --Primary-100: #ffc4af;
+  --Primary-200: #ff9f7e;
+  --Primary-300: #ff794c;
+  --Primary-400: #ff5014;
+  --Primary-500: #e63b00;
+
+  --Neutral-White: #fff;
+  --Neutral-50: #f0f2f5;
+  --Neutral-100: #d7dce5;
+  --Neutral-200: #c0c4cc;
+  --Neutral-300: #878d99;
+  --Neutral-400: #4e5666;
+  --Neutral-500: #161a22;
+
+  --Error-Color: #ff424f;
+}

@@ -1,0 +1,14 @@
+.module {
+  border-bottom: 1px solid var(--Primary-400);
+}
+
+.wrapper {
+  background-color: var(--Neutral-White);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}

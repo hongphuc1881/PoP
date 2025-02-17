@@ -1,0 +1,71 @@
+.menuButton {
+  border: none;
+  outline: none;
+  background-color: var(--Neutral-White);
+  padding-left: 6px;
+  height: 100%;
+  display: block;
+  padding-right: 4px;
+}
+
+.menuButton::before {
+  content: '';
+  display: block;
+  background-color: var(--Primary-400);
+  mask-image: url('./assets/MenuIcon.svg');
+  width: 24px;
+  height: 24px;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.16);
+  display: none;
+}
+
+.isOpenMenu.overlay {
+  display: block;
+  z-index: 10;
+}
+
+.menu {
+  height: 100vh;
+  width: 260px;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  right: -260px;
+  background-color: var(--Neutral-White);
+  transition: 0.2s;
+}
+
+.isOpenMenu.menu {
+  right: 0;
+}
+
+.menuList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.userInfo {
+  border-bottom: 1px solid var(--Neutral-300);
+  display: block;
+  padding: 16px;
+}
+
+.content {
+  padding: 16px;
+}
+
+.btnGroup {
+  display: flex;
+  flex-direction: column;
+  margin-top: 24px;
+  gap: 8px;
+}

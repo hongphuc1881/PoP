@@ -1,0 +1,148 @@
+.top {
+  background-color: var(--Neutral-White);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.nav {
+  background-color: var(--Primary-400);
+}
+.navList {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.navItem {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.navItemLink {
+  position: relative;
+  display: block;
+  padding: 12px 0;
+  width: fit-content;
+  height: 100%;
+  color: var(--Neutral-White);
+  font-weight: 300;
+  font-size: 16px;
+}
+
+.navItemLink::after {
+  content: '';
+  position: absolute;
+  display: none;
+  width: 100%;
+  height: 2px;
+  background-color: var(--Neutral-White);
+}
+
+.navItemLink:hover::after {
+  display: block;
+}
+
+.btnGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.textBoxSearch {
+  border: 1px solid var(--Neutral-300);
+  border-radius: 20px;
+  width: 400px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-right: 8px;
+}
+
+.inputSearch {
+  border: none;
+  outline: none;
+  flex: 1;
+  height: 100%;
+  border-radius: 20px;
+  padding: 0 16px;
+}
+
+.searchIcon {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+
+.searchIcon::after {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  background-color: var(--Primary-400);
+  mask-image: url('./assets/Search.svg');
+}
+
+.profileWrapper {
+  position: relative;
+}
+
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.popover {
+  position: absolute;
+  z-index: 10;
+  right: 0%;
+  background-color: var(--Neutral-White);
+  width: 200px;
+  box-shadow: 0px 0px 4px 0px var(--Neutral-200);
+  border-radius: 8px;
+  padding: 8px 0;
+  display: none;
+}
+
+.popover::before {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 20px;
+  background-color: transparent;
+  position: absolute;
+  top: -10px;
+  right: 0;
+}
+
+.profileWrapper:hover .popover {
+  display: block;
+}
+
+.popoverLink {
+  display: block;
+  padding: 6px 16px;
+}
+
+.popoverLink:hover {
+  color: var(--Primary-400);
+}
+
+li:has(.logoutBtn) {
+  border-top: 1px solid var(--Neutral-300);
+  padding: 8px 8px 0;
+}
+
+.logoutBtn {
+  width: 100%;
+}
