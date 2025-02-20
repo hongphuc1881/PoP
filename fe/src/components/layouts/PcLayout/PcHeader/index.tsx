@@ -1,8 +1,7 @@
-import { useMutation } from '@tanstack/react-query';
 import { Link, useNavigate } from 'react-router-dom';
-import { logout } from '../../../../api/auth.api';
 import internalPath from '../../../../constants/path';
 import { useLoginState } from '../../../../providers/LoginStateProvider';
+import { clearTokenFromLS } from '../../../../utils/auth';
 import { Button } from '../../../Button';
 import { NavList } from '../../variables';
 import Logo from './assets/Logo@3x.png';
@@ -12,15 +11,10 @@ import styles from './styles.module.css';
 export default function HeaderPc() {
   const { isLogin } = useLoginState();
   const navigate = useNavigate();
-  const logoutMutation = useMutation({
-    mutationFn: logout,
-    onSuccess: () => {
-      navigate('/');
-    },
-  });
 
   const handleLogout = () => {
-    logoutMutation.mutate();
+    clearTokenFromLS();
+    navigate('/');
   };
   return (
     <header className={styles.module}>

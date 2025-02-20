@@ -2,8 +2,11 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@tanstack/react-query';
 import { omit } from 'lodash';
 import { useForm } from 'react-hook-form';
+import { Link, useNavigate } from 'react-router-dom';
 import { registerAccount } from '../../../api/auth.api';
 import { Button } from '../../../components/Button';
+import { Typography } from '../../../components/Typography';
+import internalPath from '../../../constants/path';
 import { ErrorResponseApi } from '../../../types/utils.type';
 import { rules, schema, Schema } from '../../../utils/rule';
 import { isAxiosUnprocessableEntityError } from '../../../utils/utils';
@@ -21,22 +24,20 @@ export const RegisterPc = () => {
     setError,
     formState: { errors },
   } = useForm<Schema>({ resolver: yupResolver(schema) });
+  const navigate = useNavigate();
 
   const onSubmit = handleSubmit((data) => {
     const body = omit(data, ['confirmPassword']);
     registerAccountMutation.mutate(body, {
-      onSuccess(data) {
-        console.log(data);
+      onSuccess() {
+        navigate('/');
       },
       onError(error) {
-        console.log(error);
         if (
           isAxiosUnprocessableEntityError<
             ErrorResponseApi<Omit<Schema, 'confirmPassword'>>
           >(error)
         ) {
-          console.log(error);
-
           const formError = error.response?.data.data;
           if (formError?.email) {
             setError('email', { message: formError.email });
@@ -50,83 +51,82 @@ export const RegisterPc = () => {
     <div className={styles.module}>
       <form onSubmit={onSubmit} className={styles.form} noValidate>
         <div className={styles.formGroup}>
-          <label htmlFor="email">Email: </label>
+          <label htmlFor="email">Email </label>
           <input
             type="email"
             {...register('email', rules.email)}
             id="email"
-            placeholder="Nhập email của bạn"
+            placeholder="example@email.com"
           />
-          <span className={styles.errorMessage}>{errors.email?.message}</span>
+          {errors.email && (
+            <Typography tag="span" className={styles.errorMessage}>
+              {errors.email.message}
+            </Typography>
+          )}
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="username">Tên đăng nhập: </label>
+          <label htmlFor="username">Username </label>
           <input
             type="text"
             {...register('username', rules.username)}
             id="username"
-            placeholder="Nhập tên đăng nhập"
+            placeholder="John Doe"
           />
-          <span className={styles.errorMessage}>
-            {errors.username?.message}
-          </span>
+          {errors.username && (
+            <Typography tag="span" className={styles.errorMessage}>
+              {errors.username.message}
+            </Typography>
+          )}
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="password">Mật khẩu: </label>
+          <label htmlFor="password">Password </label>
           <input
             type="password"
             {...register('password', rules.password)}
             id="password"
-            placeholder="Nhập mật khẩu"
+            placeholder="Enter your password"
           />
-          <span className={styles.errorMessage}>
-            {errors.password?.message}
-          </span>
+          {errors.password && (
+            <Typography tag="span" className={styles.errorMessage}>
+              {errors.password.message}
+            </Typography>
+          )}
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="confirmPassword">Nhập lại mật khẩu: </label>
+          <label htmlFor="confirmPassword">Confirm password </label>
           <input
             type="password"
             {...register('confirmPassword', {
               ...rules.confirmPassword,
               validate: (value) =>
-                value === getValues('password') || 'Mật khẩu chưa khớp',
+                value === getValues('password') || 'Password does not match',
             })}
-            placeholder="Nhập lại mật khẩu"
+            placeholder="Enter your confirm password"
             id="confirmPassword"
           />
-          <span className={styles.errorMessage}>
-            {errors.confirmPassword?.message}
-          </span>
+          {errors.confirmPassword && (
+            <Typography tag="span" className={styles.errorMessage}>
+              {errors.confirmPassword.message}
+            </Typography>
+          )}
         </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="fullName">Họ và tên: </label>
-          <input
-            type="text"
-            {...register('fullName', rules.fullName)}
-            id="fullName"
-            placeholder="Nhập họ và tên"
-          />
-          <span className={styles.errorMessage}>
-            {errors.fullName?.message}
-          </span>
-        </div>
-        <div>
-          <label htmlFor="gender">Giới tính: </label>
-          <input
-            type="radio"
-            id="men"
-            {...register('gender')}
-            value="Nam"
-            defaultChecked
-          />
-          <label htmlFor="men">Nam</label>
-          <input type="radio" id="women" {...register('gender')} value="Nữ" />
-          <label htmlFor="women">Nữ</label>
-        </div>
-        <Button type="submit" size="middle" theme="primary">
-          Đăng ký
+
+        <Button
+          className={styles.registerBtn}
+          type="submit"
+          size="middle"
+          theme="primary"
+        >
+          Register
         </Button>
+        <Typography tag="p" textAlign="left" size="small">
+          if you already have an account
+          <Link to={internalPath.login} className={styles.loginLink}>
+            {' '}
+            Login
+          </Link>{' '}
+          here!
+        </Typography>
       </form>
     </div>
   );

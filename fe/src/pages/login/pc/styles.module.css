@@ -17,6 +17,7 @@
 
 .form label {
   margin-bottom: 4px;
+  margin-top: 4px;
 }
 
 .formGroup input {
@@ -29,4 +30,12 @@
   color: var(--Error-Color);
   min-height: 19.59px;
   margin-bottom: 4px;
+}
+
+.registerLink {
+  color: var(--Primary-400);
+}
+
+.loginBtn {
+  margin: 6px 0 4px;
 }

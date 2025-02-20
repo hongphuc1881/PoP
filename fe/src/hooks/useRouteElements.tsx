@@ -2,6 +2,7 @@ import { Navigate, Outlet, useRoutes } from 'react-router-dom';
 import MainLayout from '../components/layouts';
 import internalPath from '../constants/path';
 import Admin from '../pages/admin';
+import FavoriteList from '../pages/favorite_list';
 import Home from '../pages/home';
 import Login from '../pages/login';
 import Profile from '../pages/profile';
@@ -74,6 +75,20 @@ export default function useRouteElements() {
         {
           path: '/admin',
           element: <Admin />,
+        },
+      ],
+    },
+    {
+      path: '',
+      element: (
+        <MainLayout>
+          <RequireLoginRoute />
+        </MainLayout>
+      ),
+      children: [
+        {
+          path: internalPath.favoriteList,
+          element: <FavoriteList />,
         },
       ],
     },

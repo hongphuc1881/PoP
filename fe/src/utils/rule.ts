@@ -9,78 +9,64 @@ export const rules: Rules = {
   email: {
     required: {
       value: true,
-      message: 'Vui lòng nhập email',
+      message: 'Please enter your email',
     },
     pattern: {
       value: /^\S+@\S+\.\S+$/,
-      message: 'Email không đúng định dạng',
+      message: 'This field must be an email',
     },
     minLength: {
       value: 6,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
     maxLength: {
       value: 150,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
   },
 
   password: {
     required: {
       value: true,
-      message: 'Vui lòng nhập mật khẩu',
+      message: 'Please enter your password',
     },
     minLength: {
       value: 6,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
     maxLength: {
       value: 150,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
   },
 
   confirmPassword: {
     required: {
       value: true,
-      message: 'Vui lòng nhập lại mật khẩu',
+      message: 'Please re-enter password',
     },
     minLength: {
       value: 6,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
     maxLength: {
       value: 150,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
   },
 
   username: {
     required: {
       value: true,
-      message: 'Vui lòng nhập tên đăng nhập',
+      message: 'Please enter your username',
     },
     minLength: {
       value: 6,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
     maxLength: {
       value: 150,
-      message: 'Độ dài từ 6 đến 150 ký tự',
-    },
-  },
-  fullName: {
-    required: {
-      value: true,
-      message: 'Vui lòng nhập đầy đủ họ và tên',
-    },
-    minLength: {
-      value: 6,
-      message: 'Độ dài từ 6 đến 150 ký tự',
-    },
-    maxLength: {
-      value: 150,
-      message: 'Độ dài từ 6 đến 150 ký tự',
+      message: 'Please enter between 6 and 150 characters',
     },
   },
 };
@@ -88,39 +74,29 @@ export const rules: Rules = {
 export const schema = yup.object({
   email: yup
     .string()
-    .required('Vui lòng nhập email')
-    .email('Email không đúng định dạng')
-    .min(6, 'Độ dài từ 6 đến 150 ký tự')
-    .max(150, 'Độ dài từ 6 đến 150 ký tự'),
+    .required('Please enter your email')
+    .email('This field must be an email')
+    .min(6, 'Please enter between 6 and 150 characters')
+    .max(150, 'Please enter between 6 and 150 characters'),
 
   password: yup
     .string()
-    .required('Vui lòng nhập mật khẩu')
-    .min(6, 'Độ dài từ 6 đến 150 ký tự')
-    .max(150, 'Độ dài từ 6 đến 150 ký tự'),
+    .required('Please enter your password')
+    .min(6, 'Please enter between 6 and 150 characters')
+    .max(150, 'Please enter between 6 and 150 characters'),
 
   confirmPassword: yup
     .string()
-    .required('Vui lòng nhập lại mật khẩu')
-    .min(6, 'Độ dài từ 6 đến 150 ký tự')
-    .max(150, 'Độ dài từ 6 đến 150 ký tự')
-    .oneOf([yup.ref('password')], 'Mật khẩu không khớp'),
+    .required('Please re-enter password')
+    .min(6, 'Please enter between 6 and 150 characters')
+    .max(150, 'Please enter between 6 and 150 characters')
+    .oneOf([yup.ref('password')], 'Password does not match'),
 
   username: yup
     .string()
-    .required('Vui lòng nhập tên đăng nhập')
-    .min(6, 'Độ dài từ 6 đến 150 ký tự')
-    .max(150, 'Độ dài từ 6 đến 150 ký tự'),
-
-  fullName: yup
-    .string()
-    .required('Vui lòng nhập đầy đủ họ và tên')
-    .min(6, 'Độ dài từ 6 đến 150 ký tự')
-    .max(150, 'Độ dài từ 6 đến 150 ký tự'),
-  gender: yup
-    .string()
-    .required('Vui lòng chọn giới tính')
-    .oneOf(['Nam', 'Nữ'], 'Giới tính không hợp lệ'),
+    .required('Please enter your username')
+    .min(6, 'Please enter between 6 and 150 characters')
+    .max(150, 'Please enter between 6 and 150 characters'),
 });
 
 export type Schema = yup.InferType<typeof schema>;
