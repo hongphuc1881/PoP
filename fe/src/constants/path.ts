@@ -4,6 +4,7 @@ const internalPath = {
   register: '/register',
   logout: '/logout',
   profile: '/profile',
+  favoriteList: '/favorite',
 };
 
 export default internalPath;

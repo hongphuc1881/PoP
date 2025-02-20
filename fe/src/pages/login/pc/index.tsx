@@ -1,9 +1,11 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useMutation } from '@tanstack/react-query';
 import { useForm } from 'react-hook-form';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { loginAccount } from '../../../api/auth.api';
 import { Button } from '../../../components/Button';
+import { Typography } from '../../../components/Typography';
+import internalPath from '../../../constants/path';
 import { ErrorResponseApi } from '../../../types/utils.type';
 import { schema, Schema } from '../../../utils/rule';
 import { isAxiosUnprocessableEntityError } from '../../../utils/utils';
@@ -47,35 +49,49 @@ export const LoginPc = () => {
     <div className={styles.module}>
       <form onSubmit={onSubmit} className={styles.form} noValidate>
         <div className={styles.formGroup}>
-          <label htmlFor="email">Tên đăng nhập: </label>
+          <label htmlFor="email">Email </label>
           <input
             type="email"
             {...register('email')}
             id="email"
-            placeholder="Nhập email"
+            placeholder="example@email.com"
           />
-          <span className={styles.errorMessage}>{errors.email?.message}</span>
+          {errors.email && (
+            <Typography tag="span" className={styles.errorMessage}>
+              {errors.email.message}
+            </Typography>
+          )}
         </div>
         <div className={styles.formGroup}>
-          <label htmlFor="password">Mật khẩu: </label>
+          <label htmlFor="password">Password </label>
           <input
             type="password"
             {...register('password')}
             id="password"
-            placeholder="Nhập mật khẩu"
+            placeholder="Enter your password"
           />
-          <span className={styles.errorMessage}>
-            {errors.password?.message}
-          </span>
+          {errors.password && (
+            <Typography tag="span" className={styles.errorMessage}>
+              {errors.password.message}
+            </Typography>
+          )}
         </div>
         <Button
           type="submit"
           size="middle"
           theme="primary"
+          className={styles.loginBtn}
           disabled={loginMutation.isPending}
         >
-          Đăng nhập
+          Login
         </Button>
+        <Typography tag="p" textAlign="left" size="small">
+          if you do not have an account?{' '}
+          <Link to={internalPath.register} className={styles.registerLink}>
+            Register
+          </Link>{' '}
+          here!
+        </Typography>
       </form>
     </div>
   );

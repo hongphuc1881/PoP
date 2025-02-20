@@ -7,8 +7,6 @@ class Http {
   private token: string;
 
   constructor() {
-    console.log(123123);
-
     this.token = getTokenFromLS();
     this.instance = axios.create({
       baseURL: 'http://localhost:5000',

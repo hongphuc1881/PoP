@@ -1,4 +1,9 @@
 .module {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 0;
 }
 
 .form {
@@ -12,6 +17,7 @@
 
 .form label {
   margin-bottom: 4px;
+  margin-top: 4px;
 }
 
 .formGroup input {
@@ -23,5 +29,12 @@
 .errorMessage {
   color: var(--Error-Color);
   min-height: 19.59px;
-  margin-bottom: 4px;
+}
+
+.loginLink {
+  color: var(--Primary-400);
+}
+
+.registerBtn {
+  margin: 6px 0 4px;
 }

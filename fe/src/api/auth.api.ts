@@ -4,9 +4,7 @@ import http from '../utils/http';
 export const registerAccount = (body: {
   email: string;
   password: string;
-  gender: string;
   username: string;
-  fullName: string;
 }) => http.post<AuthResponse>('/api/auth/register', body);
 
 export const loginAccount = (body: { email: string; password: string }) =>
