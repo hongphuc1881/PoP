@@ -19,7 +19,7 @@
 }
 
 .xsmall {
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .left {
@@ -32,4 +32,8 @@
 
 .right {
   text-align: right;
+}
+
+.typography {
+  color: var(--primary-text);
 }
