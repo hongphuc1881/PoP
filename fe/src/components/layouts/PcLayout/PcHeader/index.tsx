@@ -47,11 +47,6 @@ export default function HeaderPc() {
                   Tài khoản của tôi
                 </Link>
               </li>
-              <li>
-                <Link className={styles.popoverLink} to={'/profile'}>
-                  Đơn mua
-                </Link>
-              </li>
 
               <li>
                 <Button

@@ -12,6 +12,12 @@ a {
   color: inherit;
 }
 
+button {
+  cursor: pointer;
+  background-color: unset;
+  border: unset;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -25,6 +31,8 @@ a {
   --alert-color: #f55852;
   --success-color: #6fc02c;
   --textlink-color: #0892c7;
+  --primary-text: #080809;
+  --secondary-text: #65686c;
 
   --Primary-50: #fff3ee;
   --Primary-75: #fff7db;
@@ -43,4 +51,6 @@ a {
   --Neutral-500: #161a22;
 
   --Error-Color: #ff424f;
+
+  --Button-active: #0866ff;
 }

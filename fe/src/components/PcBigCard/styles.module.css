@@ -1,0 +1,76 @@
+.module {
+  border-radius: 8px;
+  border: 1px solid var(--Neutral-100);
+  box-shadow: 0px 1px 2px 0px #0000001a;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content.loadMore {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.loadMoreBtn:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.header {
+  padding: 0 16px;
+}
+
+.body {
+  padding: 0 16px;
+}
+
+.footer {
+  padding: 4px 16px;
+  border-top: 1px solid var(--Neutral-100);
+  display: flex;
+}
+
+.footer .button {
+  width: 50%;
+  padding: 6px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.footer .button span {
+  color: var(--secondary-text);
+}
+
+.buttonLike::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  mask-image: url('./assets/Like.svg');
+  background-color: var(--Neutral-400);
+}
+
+.buttonLike.active span {
+  color: var(--Button-active);
+}
+
+.buttonLike.active::before {
+  background-color: var(--Button-active);
+}
+
+.buttonComment::before {
+  content: '';
+  display: block;
+  width: 20px;
+  height: 20px;
+  mask-image: url('./assets/Comment.svg');
+  background-color: var(--Neutral-400);
+}

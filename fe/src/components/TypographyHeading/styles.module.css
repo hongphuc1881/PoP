@@ -1,0 +1,45 @@
+.heading {
+  color: var(--primary-text);
+}
+
+.heading[data-theme='bold'] {
+  font-weight: 600;
+}
+
+.heading[data-theme='regular'] {
+  font-weight: 400;
+}
+
+.heading[data-size='xxl'] {
+  font-size: 48px;
+}
+.heading[data-size='xl'] {
+  font-size: 32px;
+}
+
+.heading[data-size='l'] {
+  font-size: 24px;
+}
+
+.heading[data-size='m'] {
+  font-size: 16px;
+}
+
+.heading[data-size='s'] {
+  font-size: 14px;
+}
+.heading[data-size='xs'] {
+  font-size: 12px;
+}
+
+.heading[data-textalign='left'] {
+  text-align: left;
+}
+
+.heading[data-textalign='center'] {
+  text-align: center;
+}
+
+.heading[data-textalign='right'] {
+  text-align: right;
+}
